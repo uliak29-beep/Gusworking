@@ -2,10 +2,763 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Gusworking</title>
+    <title>Gusworking — платформа для заказчиков и исполнителей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Gusworking — платформа, где заказчики находят исполнителей, а исполнители строят свою карьеру."
+    />
+    <style>
+      :root {
+        --bg-main: #f5f5f7;
+        --bg-card: #ffffff;
+        --text-main: #111111;
+        --text-muted: #555555;
+        --accent: #2563eb;
+        --accent-soft: #e0edff;
+        --border-soft: #e2e2e7;
+        --danger: #e11d48;
+        --success: #16a34a;
+        --radius-lg: 16px;
+        --radius-md: 10px;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bg-main);
+        color: var(--text-main);
+        line-height: 1.5;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      /* Header */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(245, 245, 247, 0.92);
+        border-bottom: 1px solid rgba(226, 226, 231, 0.7);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .logo-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 20% 20%, #2563eb, #111827);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 15px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .nav a:hover {
+        color: var(--text-main);
+      }
+
+      .lang-switch {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .lang-badge {
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      /* Hero */
+
+      .hero {
+        padding: 32px 0 40px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 32px;
+        align-items: center;
+      }
+
+      .hero-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px solid var(--border-soft);
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+      }
+
+      .hero-label span {
+        padding: 2px 7px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hero-title {
+        font-size: 34px;
+        line-height: 1.1;
+        margin-bottom: 14px;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+        color: var(--text-muted);
+        max-width: 440px;
+        margin-bottom: 18px;
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        background: #111827;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary span {
+        font-size: 16px;
+      }
+
+      .btn-outline {
+        padding: 9px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        background: #ffffff;
+        color: var(--text-main);
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .hero-note {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .hero-note strong {
+        font-weight: 600;
+        color: var(--text-main);
+      }
+
+      /* Hero side card */
+
+      .hero-card {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        padding: 16px 16px 18px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(226, 226, 231, 0.9);
+      }
+
+      .hero-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .hero-card-title {
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .hero-card-pill {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: #f3f4ff;
+        color: #4f46e5;
+      }
+
+      .hero-card-cols {
+        display: grid;
+        grid-template-columns: 1.1fr 1.1fr;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .mini-card {
+        border-radius: var(--radius-md);
+        padding: 10px;
+        background: #f9fafb;
+        border: 1px solid var(--border-soft);
+      }
+
+      .mini-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .mini-value {
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .mini-value.success {
+        color: var(--success);
+      }
+
+      .mini-value.danger {
+        color: var(--danger);
+      }
+
+      .hero-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background: #22c55e;
+        margin-right: 4px;
+        display: inline-block;
+      }
+
+      /* Sections */
+
+      section {
+        padding: 16px 0 6px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .section-subtitle {
+        font-size: 13px;
+        color: var(--text-muted);
+        max-width: 420px;
+      }
+
+      /* Two columns */
+
+      .two-cols {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        padding: 14px 14px 16px;
+        border: 1px solid var(--border-soft);
+      }
+
+      .card-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .card-text {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .pill {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #f3f4f6;
+        color: #374151;
+      }
+
+      /* Steps */
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .step {
+        background: #ffffff;
+        border-radius: var(--radius-md);
+        padding: 10px 10px 12px;
+        border: 1px solid var(--border-soft);
+      }
+
+      .step-number {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+
+      .step-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .step-text {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Trust / future */
+
+      .inline-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #ecfdf3;
+        color: #166534;
+        margin-bottom: 8px;
+      }
+
+      .inline-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: #22c55e;
+      }
+
+      .list {
+        font-size: 13px;
+        color: var(--text-muted);
+        padding-left: 16px;
+      }
+
+      .list li {
+        margin-bottom: 6px;
+      }
+
+      /* Footer */
+
+      footer {
+        margin-top: auto;
+        padding: 18px 0 24px;
+        border-top: 1px solid var(--border-soft);
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      /* Responsive */
+
+      @media (max-width: 840px) {
+        .hero-inner {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .hero-card {
+          order: -1;
+        }
+
+        .steps {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .two-cols {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .hero-title {
+          font-size: 28px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .header-inner {
+          height: 56px;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 20px;
+        }
+
+        .hero-card {
+          padding: 12px;
+        }
+
+        .card {
+          padding: 12px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Добро пожаловать в Gusworking!</h1>
-    <p>Сайт успешно запущен 🎉</p>
+    <div class="page">
+      <header>
+        <div class="container header-inner">
+          <div class="logo">
+            <div class="logo-mark">G</div>
+            <div>Gusworking</div>
+          </div>
+          <div class="nav">
+            <a href="#clients">Заказчикам</a>
+            <a href="#freelancers">Исполнителям</a>
+            <a href="#how">Как это работает</a>
+            <a href="#trust">Рейтинги и доверие</a>
+            <button class="lang-switch" type="button">
+              <span>🌐</span>
+              <span>Multi-language</span>
+              <span class="lang-badge">beta</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="container hero-inner">
+            <div>
+              <div class="hero-label">
+                <span>New</span>
+                Платформа для тех, кто хочет работать по‑взрослому
+              </div>
+              <h1 class="hero-title">
+                Встреча заказчиков и исполнителей<br />без хаоса и лишнего
+                шума.
+              </h1>
+              <p class="hero-subtitle">
+                Gusworking — гибрид Upwork, Fiverr, hh и LinkedIn: проекты,
+                карьера, репутация и прозрачные рейтинги в одном месте.
+              </p>
+              <div class="hero-cta">
+                <button class="btn-primary" type="button">
+                  Начать как заказчик <span>→</span>
+                </button>
+                <button class="btn-outline" type="button">
+                  Начать как исполнитель
+                </button>
+              </div>
+              <div class="hero-note">
+                <strong>Сейчас:</strong> ранний прототип. Позже — полноценные
+                рейтинги, метрики и умный поиск по профилю.
+              </div>
+            </div>
+
+            <aside class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-card-title">Пульс платформы (mock)</div>
+                <div class="hero-card-pill">MVP / pre‑launch</div>
+              </div>
+              <div class="hero-card-cols">
+                <div class="mini-card">
+                  <div class="mini-label">Активные проекты</div>
+                  <div class="mini-value">32</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-label">Исполнители в очереди</div>
+                  <div class="mini-value success">+128 ожидают приглашения</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-label">Средний рейтинг</div>
+                  <div class="mini-value">4.8 / 5.0</div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-label">Отменённые сделки</div>
+                  <div class="mini-value danger">ниже 3%</div>
+                </div>
+              </div>
+              <div class="hero-card-footer">
+                <div>
+                  <span class="dot"></span> Данные — концепция того, как будет
+                  работать аналитика.
+                </div>
+                <div>Multi‑lang: RU / EN / FR / ES / AR / HI / ZH</div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="clients">
+          <div class="container">
+            <div class="section-header">
+              <h2 class="section-title">Для заказчиков</h2>
+              <p class="section-subtitle">
+                Инструменты, чтобы быстро находить «своих» людей: не просто
+                фрилансеры, а партнёры, с которыми хочется работать снова.
+              </p>
+            </div>
+            <div class="two-cols">
+              <div class="card">
+                <div class="card-title">Умный поиск исполнителей</div>
+                <p class="card-text">
+                  Фильтрация по опыту, ставке, языкам, рейтингу и типу проектов.
+                  В будущем — рекомендации на основе того, с кем вы уже
+                  успешно работали.
+                </p>
+                <div class="pill-row">
+                  <div class="pill">Фильтры по навыкам</div>
+                  <div class="pill">История сотрудничества</div>
+                  <div class="pill">Короткий список кандидатов</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-title">Прозрачные условия</div>
+                <p class="card-text">
+                  Чёткие бюджеты, дедлайны и договорённости. Позже — защита
+                  сделок и рейтинги за адекватность и надёжность с обеих
+                  сторон.
+                </p>
+                <div class="pill-row">
+                  <div class="pill">Фикс / почасовая оплата</div>
+                  <div class="pill">История проектов</div>
+                  <div class="pill">Оценка коммуникации</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="freelancers">
+          <div class="container">
+            <div class="section-header">
+              <h2 class="section-title">Для исполнителей</h2>
+              <p class="section-subtitle">
+                Не просто разовые заказы, а возможность построить репутацию,
+                которая работает на вас: профиль ближе к LinkedIn, чем к
+                анонимной бирже.
+              </p>
+            </div>
+            <div class="two-cols">
+              <div class="card">
+                <div class="card-title">Профиль как живая визитка</div>
+                <p class="card-text">
+                  Навыки, стэк, языки, кейсы, отзывчивость, рейтинг по разным
+                  осям. Можно показать не только «что я делаю», но и «как я
+                  работаю».
+                </p>
+                <div class="pill-row">
+                  <div class="pill">Навыки и специализации</div>
+                  <div class="pill">Кейсы и портфолио</div>
+                  <div class="pill">Мульти‑язычные профили</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-title">Проекты, а не хаос</div>
+                <p class="card-text">
+                  Чёткие описания задач, бюджет и ожидания. В будущем —
+                  «рейтинг заказчика», чтобы избегать токсичных и выбирать тех,
+                  с кем хочется расти.
+                </p>
+                <div class="pill-row">
+                  <div class="pill">Фокус на качестве</div>
+                  <div class="pill">Рейтинг заказчика</div>
+                  <div class="pill">История взаимодействий</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="how">
+          <div class="container">
+            <div class="section-header">
+              <h2 class="section-title">Как это работает</h2>
+              <p class="section-subtitle">
+                Мы начинаем с простой, понятной схемы. По мере развития сюда
+                добавятся рейтинги, метрики и более тонкая аналитика.
+              </p>
+            </div>
+            <div class="steps">
+              <div class="step">
+                <div class="step-number">Шаг 1</div>
+                <div class="step-title">Создаёте профиль или проект</div>
+                <p class="step-text">
+                  Заказчик описывает задачу. Исполнитель заполняет профиль:
+                  навыки, языки, опыт. Позже здесь появится импорт из LinkedIn
+                  и резюме.
+                </p>
+              </div>
+              <div class="step">
+                <div class="step-number">Шаг 2</div>
+                <div class="step-title">Подбор и отклики</div>
+                <p class="step-text">
+                  Платформа подсказывает релевантных исполнителей и проекты.
+                  В будущем — умный матчинг, основанный на истории успешных
+                  сделок.
+                </p>
+              </div>
+              <div class="step">
+                <div class="step-number">Шаг 3</div>
+                <div class="step-title">Работа и репутация</div>
+                <p class="step-text">
+                  После каждой сделки обновляется рейтинг, метрики и репутация.
+                  Чем качественнее работа — тем сильнее профиль и интереснее
+                  проекты.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="trust">
+          <div class="container">
+            <div class="section-header">
+              <div>
+                <div class="inline-badge">
+                  <span class="inline-dot"></span>
+                  Фокус на рейтингах и доверии
+                </div>
+                <h2 class="section-title">То, что будет отличать Gusworking</h2>
+              </div>
+              <p class="section-subtitle">
+                Сейчас мы в прототипе. Затем появятся полноценные рейтинги,
+                индексы доверия, языковые кластеры и конкуретная аналитика —
+                чтобы платформа была по‑настоящему сильной.
+              </p>
+            </div>
+            <div class="two-cols">
+              <div class="card">
+                <div class="card-title">Рейтинги и индексы</div>
+                <ul class="list">
+                  <li>Общий рейтинг исполнителя и заказчика.</li>
+                  <li>Отдельные оценки: качество, сроки, коммуникация.</li>
+                  <li>Индексы надёжности и «здоровья» профиля.</li>
+                  <li>Анти‑спам и анти‑серые схемы.</li>
+                </ul>
+              </div>
+              <div class="card">
+                <div class="card-title">Мульти‑язычный мир</div>
+                <ul class="list">
+                  <li>Русский, английский, французский, испанский.</li>
+                  <li>Арабский, хинди (индийский общий), китайский (общий).</li>
+                  <li>Профили и проекты с языковыми тегами.</li>
+                  <li>Позже — локальные рейтинги и рынки по регионам.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container footer-inner">
+          <div>© Gusworking, ранний прототип платформы.</div>
+          <div class="footer-links">
+            <span>Публичная версия MVP</span>
+            <span>•</span>
+            <span>Multi‑language позже</span>
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
