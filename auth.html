@@ -3,51 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Вход / Регистрация — Gusworking</title>
+  <title>Регистрация — Gusworking</title>
   <style>
-    body { font-family: system-ui, sans-serif; background: #f5f5f7; margin: 0; padding: 0; color: #111; }
-    .container { max-width: 400px; margin: 0 auto; padding: 40px 20px; }
-    .card { background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    input { width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; }
-    .btn { width: 100%; background: #111827; color: #fff; padding: 10px; border-radius: 8px; border: none; cursor: pointer; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f7;
+      margin: 0;
+      padding: 0;
+      color: #111;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .role-select {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .role-option {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      background: #f9fafb;
+    }
+
+    .role-option.active {
+      border-color: #2563eb;
+      background: #e0edff;
+      font-weight: 600;
+    }
+
+    .avatar-upload {
+      background: #f3f4f6;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      background: #111827;
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="container header-inner">
-    <div class="logo">
-      <div class="logo-mark">G</div>
-      <div>Gusworking</div>
-    </div>
-
-    <nav class="nav">
-      <a href="index.html">Главная</a>
-      <a href="projects.html">Проекты</a>
-      <a href="profile.html">Профиль исполнителя</a>
-      <a href="client.html">Профиль заказчика</a>
-      <a href="auth.html">Вход / Регистрация</a>
-      <button class="lang-switch" type="button">🌐 Multi‑language <span class="lang-badge">beta</span></button>
-    </nav>
-  </div>
-</header>
-
 <div class="container">
   <div class="card">
-    <h2>Вход</h2>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Пароль" />
-    <button class="btn">Войти</button>
-  </div>
+    <h2>Создание аккаунта</h2>
 
-  <div style="height: 20px;"></div>
+    <label>Выберите роль</label>
+    <div class="role-select">
+      <div class="role-option active">Исполнитель</div>
+      <div class="role-option">Заказчик</div>
+    </div>
 
-  <div class="card">
-    <h2>Регистрация</h2>
-    <input type="text" placeholder="Имя" />
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Пароль" />
+    <label>Имя</label>
+    <input type="text" placeholder="Ваше имя" />
+
+    <label>Email</label>
+    <input type="email" placeholder="example@email.com" />
+
+    <label>Пароль</label>
+    <input type="password" placeholder="••••••••" />
+
+    <label>Язык интерфейса</label>
+    <select>
+      <option>Русский</option>
+      <option>English</option>
+      <option>Français</option>
+      <option>Español</option>
+      <option>العربية</option>
+      <option>हिन्दी</option>
+      <option>中文</option>
+    </select>
+
+    <div class="avatar-upload">
+      Загрузка аватара (пока неактивно)
+    </div>
+
     <button class="btn">Создать аккаунт</button>
   </div>
 </div>
