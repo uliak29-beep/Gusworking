@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профиль заказчика — Gusworking</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f5f5f7; margin: 0; padding: 0; color: #111; }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    .card { background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    h2 { margin-top: 0; }
+    .project { padding-bottom: 12px; border-bottom: 1px solid #eee; margin-bottom: 12px; }
+    .project:last-child { border-bottom: none; }
+    .badge { background: #e0edff; color: #2563eb; padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-mark">G</div>
+      <div>Gusworking</div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="projects.html">Проекты</a>
+      <a href="profile.html">Профиль исполнителя</a>
+      <a href="client.html">Профиль заказчика</a>
+      <a href="auth.html">Вход / Регистрация</a>
+      <button class="lang-switch" type="button">🌐 Multi‑language <span class="lang-badge">beta</span></button>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h1>Компания / Заказчик</h1>
+    <p>Тип деятельности: IT / Маркетинг / Дизайн</p>
+    <p>Локация: Москва, Россия</p>
+    <span class="badge">Проверенный заказчик</span>
+  </div>
+
+  <div class="card">
+    <h2>Активные проекты</h2>
+
+    <div class="project">
+      <h3>Разработка мобильного приложения</h3>
+      <p>Бюджет: 150 000 ₽</p>
+      <p>Срок: 30 дней</p>
+    </div>
+
+    <div class="project">
+      <h3>Дизайн лендинга</h3>
+      <p>Бюджет: 25 000 ₽</p>
+      <p>Срок: 7 дней</p>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <h2>Отзывы исполнителей</h2>
+    <p><strong>Иван:</strong> Отличный заказчик, чёткие требования, быстрая оплата.</p>
+    <p><strong>Мария:</strong> Приятно работать, всё по делу.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
