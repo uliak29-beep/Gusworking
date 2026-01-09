@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профиль исполнителя — Gusworking</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f7;
+      margin: 0;
+      padding: 0;
+      color: #111;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .profile-header {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #ddd;
+    }
+
+    .profile-info h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .profile-info p {
+      margin: 6px 0;
+      color: #555;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      background: #e0edff;
+      color: #2563eb;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .section {
+      margin-top: 24px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      background: #f3f4f6;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .case {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .case:last-child {
+      border-bottom: none;
+    }
+
+    .rating-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .rating-box {
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .rating-box strong {
+      font-size: 18px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="profile-header">
+    <div class="avatar"></div>
+    <div class="profile-info">
+      <h1>Имя Фамилия</h1>
+      <p>UX/UI дизайнер • 5 лет опыта</p>
+      <p>Москва • RU / EN / FR</p>
+
+      <div class="badge-row">
+        <div class="badge">Доступен</div>
+        <div class="badge">Готов к проектам</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Рейтинг и метрики</h2>
+    <div class="rating-grid">
+      <div class="rating-box"><strong>4.8</strong>Общий рейтинг</div>
+      <div class="rating-box"><strong>95%</strong>Сроки</div>
+      <div class="rating-box"><strong>92%</strong>Коммуникация</div>
+      <div class="rating-box"><strong>87%</strong>Повторные заказы</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Навыки</h2>
+    <div class="skills">
+      <div class="skill">Figma</div>
+      <div class="skill">UX Research</div>
+      <div class="skill">UI Design</div>
+      <div class="skill">Prototyping</div>
+      <div class="skill">HTML/CSS</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Портфолио</h2>
+
+    <div class="case">
+      <h3>Redesign мобильного приложения</h3>
+      <p>Улучшение UX, создание нового UI‑кита, рост конверсии на 18%.</p>
+    </div>
+
+    <div class="case">
+      <h3>Лендинг для IT‑стартапа</h3>
+      <p>Аналитика, структура, дизайн, адаптив. Рост заявок на 32%.</p>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <h2>Опыт работы</h2>
+    <p><strong>UX/UI дизайнер — Freelance</strong> (2020–2024)</p>
+    <p>Работа с международными клиентами, создание интерфейсов, аналитика.</p>
+  </div>
+
+  <div class="section">
+    <h2>Отзывы</h2>
+    <p><strong>Алексей, заказчик:</strong> Отличная работа, всё в срок, коммуникация на высоте.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
