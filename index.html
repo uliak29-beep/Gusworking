@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Gusworking — платформа для заказчиков и исполнителей</title>
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -503,27 +504,20 @@
   </head>
   <body>
     <div class="page">
-      <header>
-  <div class="container header-inner">
-    <div class="logo">
-      <div class="logo-mark">G</div>
-      <div>Gusworking</div>
-    </div>
+      <header class="site-header">
+        <div class="logo-container">
+          <img src="images/logo.png" alt="Gusworking logo" class="logo" />
+          <span class="brand-name">Gusworking</span>
+        </div>
 
-    <nav class="nav">
-      <a href="index.html">Главная</a>
-      <a href="projects.html">Проекты</a>
-      <a href="profile.html">Профиль исполнителя</a>
-      <a href="client.html">Профиль заказчика</a>
-      <a href="auth.html">Вход / Регистрация</a>
-
-      <button class="lang-switch" type="button">
-        🌐 Multi‑language
-        <span class="lang-badge">beta</span>
-      </button>
-    </nav>
-  </div>
-</header>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+            <li><a href="auth.html">Вход</a></li>
+          </ul>
+        </nav>
+      </header>
 
 
       <main>
